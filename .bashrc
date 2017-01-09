@@ -1,5 +1,5 @@
 # URL: https://github.com/wfa207/bash-config
-# Description: A barebones .bashrc file that includes some convenience aliases 
+# Description: A barebones .bashrc file that includes some convenience aliases
 
 # ============================================================================
 # Powerline Configuration#{{{
@@ -52,8 +52,8 @@ alias wrk=wrk_func
 alias nowrk="deactivate"
 #}}}
 # ============================================================================
-# Private Aliases
+# Private Aliases#{{{
 # ============================================================================
-. ~/.privaliases.sh
+. ~/.privaliases.sh#}}}
 # ============================================================================
 
