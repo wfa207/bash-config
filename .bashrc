@@ -46,20 +46,32 @@ alias gs="git status"
 # This function takes the first parameter passed after wrk_func and activates
 # the associated virtual environment while simultaneously starting vim
 
-wrk_func() {
+# Old function that uses a global variable to determine the editor
+wrk_gvar_func() {
 	if [ -z ${EDITOR+x} ] || [ -z ${EDITOR-x} ]
 		then EDITOR=vim
 	fi
 	workon $1 && $EDITOR .
 }
 
-alias wrk=wrk_func
+# Current function that uses argument to determine editor; without an editor
+# argument, the function simply activates the virtualenv
+wrk_arg_func() {
+	if [ -z $2 ]
+		then workon $1
+	else
+		workon $2 && $1 .
+	fi
+}
+
+alias wrk=wrk_arg_func
 alias nowrk="deactivate"
 #}}}
 # ============================================================================
 # General Aliases#{{{
 # ============================================================================
-alias .b=". ~/.bashrc" #}}}
+alias .b=". ~/.bashrc" 
+alias runproj="python -m $(basename $(pwd)).bin"#}}}
 # ============================================================================
 # Private Aliases#{{{
 # ============================================================================
