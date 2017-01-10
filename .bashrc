@@ -47,15 +47,22 @@ alias gs="git status"
 # the associated virtual environment while simultaneously starting vim
 
 wrk_func() {
-	workon $1 && vim .
+	if [ -z ${EDITOR+x} ] || [ -z ${EDITOR-x} ]
+		then EDITOR=vim
+	fi
+	workon $1 && $EDITOR .
 }
 
 alias wrk=wrk_func
 alias nowrk="deactivate"
 #}}}
 # ============================================================================
+# General Aliases
+# ============================================================================
+alias .b=". ~/.bashrc"
+# ============================================================================
 # Private Aliases#{{{
 # ============================================================================
-. ~/.privaliases.sh#}}}
+. ~/.privaliases.sh #}}}
 # ============================================================================
 
