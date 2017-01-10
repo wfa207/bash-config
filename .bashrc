@@ -23,6 +23,8 @@ alias lsa="ls -l"						# List with addl. details
 
 # Do not include an alias for '.' (shortcut for source)
 alias ..='cd ..'						# Go up a directory
+alias ...='cd ../..'					# Go up 2 directories
+alias ....='cd ../../..'				# Go up 3 directories
 alias bk='cd -'							# Go back a directory
 #}}}
 # ============================================================================
