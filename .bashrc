@@ -34,7 +34,8 @@ venv_arg_func() {
 	else
 		if [ "$1" == "dev" ]
 			then workon $2 &&
-				tmux new -d -s my_session 'tmux splitw -p 12 && vim' &&
+				tmux new -d -s my_session 'tmux splitw -dp 13\
+					&& vim' &&
 				tmux attach -t my_session
 		else workon $2 && $1 .
 		fi
