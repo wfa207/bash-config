@@ -2,6 +2,12 @@
 # Description: A barebones .bashrc file that includes some convenience aliases
 
 # =============================================================================
+# Features#{{{
+# =============================================================================
+# Use vim keybindings in the terminal
+set -o vi
+#}}}
+# =============================================================================
 # Powerline Configuration#{{{
 # =============================================================================
 # URL: https://github.com/riobard/bash-powerline
@@ -34,7 +40,7 @@ venv_arg_func() {
 	else
 		if [ "$1" == "dev" ]
 			then workon $2 &&
-				tmux new -d -s my_session 'tmux splitw -dp 13\
+				tmux new -d -s my_session 'tmux splitw -dp 10\
 					&& vim' &&
 				tmux attach -t my_session
 		else workon $2 && $1 .
@@ -105,7 +111,7 @@ alias nowrk="deactivate && cd"
 alias .b=". ~/.bashrc"
 alias runproj="python -m $(get_cur_dir).bin"
 alias cl="clear"
-alias dev-tmux="tmux splitw -bp 87 vim"
+alias dev-tmux="tmux splitw -bp 90 vim"
 #}}}
 # =============================================================================
 # Private Aliases#{{{
