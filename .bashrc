@@ -32,7 +32,7 @@ venv_arg_func() {
 	if [ -z $2 ]
 		then workon $1
 	else
-		if [ "$1" == "tmux" ]
+		if [ "$1" == "dev" ]
 			then workon $2 &&
 				tmux new -d -s my_session 'tmux splitw -p 12 && vim' &&
 				tmux attach -t my_session
@@ -103,6 +103,7 @@ alias nowrk="deactivate && cd"
 # =============================================================================
 alias .b=". ~/.bashrc"
 alias runproj="python -m $(get_cur_dir).bin"
+alias cl="clear"
 alias dev-tmux="tmux splitw -bp 87 vim"
 #}}}
 # =============================================================================
