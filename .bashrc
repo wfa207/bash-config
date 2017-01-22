@@ -48,6 +48,12 @@ venv_arg_func() {
 	fi
 }
 
+# Run project (must specify name of project / subproject and function name)
+python_script_utility() {
+	# $1 must be the (sub) project name and $2 must be the function name
+	python -m $1.bin $2
+}
+
 # Activate virtual environment if we open up a new tab in a directory with a
 # venv. Not currently used and in draft form
 
@@ -105,7 +111,7 @@ alias nowrk="deactivate && cd"
 # General Aliases#{{{
 # =============================================================================
 alias .b=". ~/.bashrc"
-alias runproj="python -m $(get_cur_dir).bin"
+alias runpy=python_script_utility
 alias cl="clear"
 alias dev-tmux="tmux splitw -bp 96 vim"
 #}}}
