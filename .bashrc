@@ -26,8 +26,7 @@ get_cur_dir() {
 
 # Old function that uses a global variable to determine the editor
 venv_gvar_func() {
-	if [ -z ${EDITOR+x} ] || [ -z ${EDITOR-x} ]
-		then EDITOR=vim
+	if [ -z ${EDITOR+x} ] || [ -z ${EDITOR-x} ]; then EDITOR=vim
 	fi
 	workon $1 && $EDITOR .
 }
@@ -35,11 +34,9 @@ venv_gvar_func() {
 # Current function that uses argument to determine editor; without an editor
 # argument, the function simply activates the virtualenv
 venv_arg_func() {
-	if [ -z $2 ]
-		then workon $1
+	if [ -z $2 ]; then workon $1
 	else
-		if [ "$1" == "dev" ]
-			then workon $2 &&
+		if [ "$1" == "dev" ]; then workon $2 &&
 				tmux new -d -s my_session 'tmux splitw -dp 4\
 					&& vim' &&
 				tmux attach -t my_session
@@ -51,7 +48,12 @@ venv_arg_func() {
 # Run project (must specify name of project / subproject and function name)
 python_script_utility() {
 	# $1 must be the (sub) project name and $2 must be the function name
-	python -m $1.bin $2
+	# If $3 exists, then we will run the script with arguments
+	if [ -z "$3" ]; then python -m "$1".bin "$2"
+	else
+		local PY_ARG="$3"
+		python -m "$1".bin "$2" "$PY_ARG" --option=single
+	fi
 }
 
 # Activate virtual environment if we open up a new tab in a directory with a
