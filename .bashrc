@@ -40,18 +40,12 @@ venv_arg_func() {
 	else
 		if [ "$1" == "dev" ]
 			then workon $2 &&
-				tmux new -d -s my_session 'tmux splitw -dp 10\
+				tmux new -d -s my_session 'tmux splitw -dp 4\
 					&& vim' &&
 				tmux attach -t my_session
 		else workon $2 && $1 .
 		fi
 	fi
-}
-
-test_func() {
-	tmux new -d -s my_session 'tmux splitw\
-		-p 12 && vim'
-	tmux attach -t my_session
 }
 
 # Activate virtual environment if we open up a new tab in a directory with a
@@ -87,9 +81,11 @@ alias bk='cd -'							# Go back a directory
 # =============================================================================
 # Git Aliases#{{{
 # =============================================================================
-alias ga="git add -p"
+alias ga="git add -A"
+alias gap="git add -p"
 alias gm="git commit -m"
 alias gb="git branch"
+alias gd="git diff"
 alias gco="git checkout"
 alias gc="git clone"
 alias gr="git remote -v"
@@ -111,7 +107,7 @@ alias nowrk="deactivate && cd"
 alias .b=". ~/.bashrc"
 alias runproj="python -m $(get_cur_dir).bin"
 alias cl="clear"
-alias dev-tmux="tmux splitw -bp 90 vim"
+alias dev-tmux="tmux splitw -bp 96 vim"
 #}}}
 # =============================================================================
 # Private Aliases#{{{
