@@ -40,7 +40,10 @@ venv_arg_func() {
 				tmux new -d -s my_session 'tmux splitw -dp 4\
 					&& vim' &&
 				tmux attach -t my_session
-		else workon $2 && $1 .
+		else 
+			if [ -z $3 ]; then workon $2 && $1 .
+			else workon $2 && $1 $2/$3
+			fi
 		fi
 	fi
 }
@@ -89,6 +92,8 @@ alias bk='cd -'							# Go back a directory
 # =============================================================================
 # Git Aliases#{{{
 # =============================================================================
+alias gls="git log"
+alias gtree="git log --graph --all"
 alias ga="git add -A"
 alias gap="git add -p"
 alias gm="git commit -m"
@@ -100,6 +105,12 @@ alias gr="git remote -v"
 alias gp="git push"
 alias gpu="git pull"
 alias gs="git status"
+alias gst="git stash"
+alias gmbase="git merge-base"
+alias grbase="git rebase -i"
+alias gstd="git stash drop"
+alias gstls="git stash list"
+alias gstap="git stash apply"
 #}}}
 # =============================================================================
 # Virtual Env Aliases#{{{
