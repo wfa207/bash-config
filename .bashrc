@@ -10,9 +10,10 @@
 # =============================================================================
 # URL: https://github.com/riobard/bash-powerline
 # Author: Rio (https://github.com/riobard)
-# Description: Powerline prompt written purely in bash
+# Description: Powerline prompt written purely in bash, with my own
+# modifications
 
-. ~/.bash-powerline.sh
+. ~/.bash-config/.bash-powerline.sh
 #}}}
 # =============================================================================
 # Helper Functions#{{{
