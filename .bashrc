@@ -4,8 +4,6 @@
 # =============================================================================
 # Features#{{{
 # =============================================================================
-# Use vim keybindings in the terminal
-set -o vi
 #}}}
 # =============================================================================
 # Powerline Configuration#{{{
@@ -95,7 +93,7 @@ alias bk='cd -'							# Go back a directory
 alias gls="git log"
 alias gtree="git log --graph --all"
 alias ga="git add -A"
-alias gap="git add -p"
+alias gap="git add -Ap"
 alias gm="git commit -m"
 alias gb="git branch"
 alias gd="git diff"
