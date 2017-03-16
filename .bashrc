@@ -2,8 +2,9 @@
 # Description: A barebones .bashrc file that includes some convenience aliases
 
 # =============================================================================
-# Features#{{{
+# Python#{{{
 # =============================================================================
+export PYTHONSTARTUP=~/.pystartup
 #}}}
 # =============================================================================
 # Powerline Configuration#{{{
@@ -13,7 +14,7 @@
 # Description: Powerline prompt written purely in bash, with my own
 # modifications
 
-. ~/.bash-config/.bash-powerline.sh
+. ~/.bash-powerline.sh
 #}}}
 # =============================================================================
 # Helper Functions#{{{
