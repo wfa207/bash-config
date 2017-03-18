@@ -59,6 +59,12 @@ python_script_utility() {
 	fi
 }
 
+virtual_env_directory_nav() {
+	local BASE_URL=/Users/wesauyueng/.virtualenvs/$1/lib/python2.7/site-packages
+	if [ -z $2 ]; then cd $BASE_URL
+	else cd $BASE_URL/$2
+	fi
+}
 # Activate virtual environment if we open up a new tab in a directory with a
 # venv. Not currently used and in draft form
 
@@ -119,6 +125,7 @@ alias gstap="git stash apply"
 # the associated virtual environment while simultaneously starting vim
 alias wrk=venv_arg_func
 alias nowrk="deactivate && cd"
+alias venv=virtual_env_directory_nav
 #}}}
 # =============================================================================
 # General Aliases#{{{
