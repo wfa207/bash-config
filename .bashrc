@@ -4,7 +4,8 @@
 # =============================================================================
 # Python#{{{
 # =============================================================================
-export PYTHONSTARTUP=~/.pystartup
+export PYTHONSTARTUP=~/.pystartup.py
+export NVM_DIR="$HOME/.nvm"
 #}}}
 # =============================================================================
 # Powerline Configuration#{{{
@@ -24,25 +25,31 @@ get_cur_dir() {
 	printf $(basename $(pwd))
 }
 
+# Name tab with custom name
+name_tab() {
+	echo -ne "\033[0;"$1"\077"
+}
+
 # Old function that uses a global variable to determine the editor
 venv_gvar_func() {
 	if [ -z ${EDITOR+x} ] || [ -z ${EDITOR-x} ]; then EDITOR=vim
 	fi
+	name_tab $1
 	workon $1 && $EDITOR .
 }
 
 # Current function that uses argument to determine editor; without an editor
 # argument, the function simply activates the virtualenv
 venv_arg_func() {
-	if [ -z $2 ]; then workon $1
+	if [ -z $2 ]; then workon $1 && . ~/.$1
 	else
-		if [ "$1" == "dev" ]; then workon $2 &&
+		if [ "$1" == "dev" ]; then workon $2 && . ~/.$2 &&
 				tmux new -d -s my_session 'tmux splitw -dp 4\
 					&& vim' &&
 				tmux attach -t my_session
-		else 
-			if [ -z $3 ]; then workon $2 && $1 .
-			else workon $2 && $1 $2/$3
+		else
+			if [ -z $3 ]; then workon $2 && . ~/.$2 && $1 .
+			else workon $2 && . ~/.$2 && $1 $2/$3
 			fi
 		fi
 	fi
@@ -82,12 +89,13 @@ virtual_env_directory_nav() {
 # =============================================================================
 # Private config variables sourced externally
 . ~/.configvar.sh
+# Autocompletion for itermocil
+complete -W "$(itermocil --list)" dev
 #}}}
 # =============================================================================
 # Navigation Aliases#{{{
 # =============================================================================
-alias ls="ls -A"						# List all files (incl. hidden)
-alias lsa="ls -l"						# List with addl. details
+alias ls="ls -Al"						# List all files (incl. hidden)
 
 # Do not include an alias for '.' (shortcut for source)
 alias ..='cd ..'						# Go up a directory
@@ -134,10 +142,39 @@ alias .b=". ~/.bashrc"
 alias runpy=python_script_utility
 alias cl="clear"
 alias dev-tmux="tmux splitw -bp 96 vim"
+alias envy="EDITOR=subl envy"
+alias kinesis-streams="aws firehose list-delivery-streams --limit 10000"
+alias dev="itermocil --here"
 #}}}
 # =============================================================================
 # Private Aliases#{{{
 # =============================================================================
 . ~/.privaliases.sh #}}}
 # =============================================================================
+# Fun stuff#{{{
+# =============================================================================
+flip() {
+  echo;
+  echo -en "( º_º）  ┬─┬   \r"; sleep .5;
+  echo -en " ( º_º） ┬─┬   \r"; sleep .5;
+  echo -en "  ( ºДº）┬─┬   \r"; sleep .5;
+  echo -en "  (╯'Д'）╯︵⊏   \r"; sleep .3;
+  echo -en "  (╯'□'）╯︵ ⊏  \r"; sleep .3;
+  echo     "  (╯°□°）╯︵ ┻━┻"; sleep .3;
+}
+#}}}
+# =============================================================================
+# Node / React Native#{{{
+# =============================================================================
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# =============================================================================#}}}
 
+source $(which virtualenvwrapper.sh)
+export Y_PATH=/Users/wesauyueng/.yy
+export Y_DEV_PATH=/Users/wesauyueng/Development
+source /Users/wesauyueng/.yy/bin/y
+
+# added by travis gem
+[ -f /Users/wesauyueng/.travis/travis.sh ] && source /Users/wesauyueng/.travis/travis.sh
