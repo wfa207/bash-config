@@ -182,10 +182,3 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # =============================================================================#}}}
 # =============================================================================
-
-export Y_PATH=/Users/wesauyueng/.yy
-export Y_DEV_PATH=/Users/wesauyueng/Development
-source /Users/wesauyueng/.yy/bin/y
-
-# added by travis gem
-[ -f /Users/wesauyueng/.travis/travis.sh ] && source /Users/wesauyueng/.travis/travis.sh
