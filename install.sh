@@ -1,5 +1,6 @@
 TGT_FILE_NAMES=(bashrc bash_profile bash-powerline.sh pystartup xpather.py)
 
+brew install TomAnthony/brews/itermocil
 pip install powerline-shell
 
 for file_name in ${TGT_FILE_NAMES[@]}; do
