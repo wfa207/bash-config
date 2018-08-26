@@ -10,12 +10,19 @@ export NVM_DIR="$HOME/.nvm"
 # =============================================================================
 # Powerline Configuration#{{{
 # =============================================================================
-# URL: https://github.com/riobard/bash-powerline
-# Author: Rio (https://github.com/riobard)
+# URL: https://github.com/b-ryan/powerline-shell
+# Author: Buck Ryan (https://github.com/b-ryan)
 # Description: Powerline prompt written purely in bash, with my own
 # modifications
 
-. ~/.bash-powerline.sh
+function _update_ps1() {
+    PS1=$(powerline-shell $?)
+}
+
+if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
+    PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
+fi
+
 #}}}
 # =============================================================================
 # Helper Functions#{{{
@@ -170,6 +177,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # =============================================================================#}}}
+# =============================================================================
 
 source $(which virtualenvwrapper.sh)
 export Y_PATH=/Users/wesauyueng/.yy
@@ -178,3 +186,5 @@ source /Users/wesauyueng/.yy/bin/y
 
 # added by travis gem
 [ -f /Users/wesauyueng/.travis/travis.sh ] && source /Users/wesauyueng/.travis/travis.sh
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
