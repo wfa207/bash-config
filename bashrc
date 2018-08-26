@@ -5,7 +5,7 @@
 # Python#{{{
 # =============================================================================
 export PYTHONSTARTUP=~/.pystartup.py
-export NVM_DIR="$HOME/.nvm"
+source $(which virtualenvwrapper.sh)
 #}}}
 # =============================================================================
 # Powerline Configuration#{{{
@@ -23,6 +23,10 @@ if [[ $TERM != linux && ! $PROMPT_COMMAND =~ _update_ps1 ]]; then
     PROMPT_COMMAND="_update_ps1; $PROMPT_COMMAND"
 fi
 
+#}}}
+# =============================================================================
+# FZF Confguration {{{
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 #}}}
 # =============================================================================
 # Helper Functions#{{{
@@ -179,12 +183,9 @@ export NVM_DIR="$HOME/.nvm"
 # =============================================================================#}}}
 # =============================================================================
 
-source $(which virtualenvwrapper.sh)
 export Y_PATH=/Users/wesauyueng/.yy
 export Y_DEV_PATH=/Users/wesauyueng/Development
 source /Users/wesauyueng/.yy/bin/y
 
 # added by travis gem
 [ -f /Users/wesauyueng/.travis/travis.sh ] && source /Users/wesauyueng/.travis/travis.sh
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
