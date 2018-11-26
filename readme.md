@@ -1,6 +1,6 @@
-#My Bash Configuration
+# My Bash Configuration
 
-##Installation
+## Installation
 
 1) Clone this repo locally
 
@@ -10,6 +10,6 @@
 
 `$ . ~/.bash-config/install.sh`
 
-##Plugins
+## Plugins
 
 Currently, the only plugin used is bash-powerline
