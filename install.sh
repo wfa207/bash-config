@@ -2,7 +2,11 @@
 brew install TomAnthony/brews/itermocil
 
 # Install powerline-shell
-pip install powerline-shell
+git clone https://github.com/b-ryan/powerline-shell
+cd powerline-shell
+python setup.py install
+cd ..
+rm -rf powerline-shell
 
 mkdir -p ~/.config/powerline-shell
 ln -Fhs "$(pwd)/powerline-config.json" ~/.config/powerline-shell/config.json
