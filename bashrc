@@ -5,7 +5,7 @@
 # Python#{{{
 # =============================================================================
 export PYTHONSTARTUP=~/.pystartup.py
-source $(which virtualenvwrapper.sh)
+[ -z ${$(which virtualenvwrapper.sh)+x} ] && source $(which virtualenvwrapper.sh)
 #}}}
 # =============================================================================
 # Powerline Configuration#{{{
@@ -99,7 +99,7 @@ virtual_env_directory_nav() {
 # Config Variables#{{{
 # =============================================================================
 # Private config variables sourced externally
-. ~/.configvar.sh
+[ -f ~/.configvar.sh ] && . ~/.configvar.sh
 # Autocompletion for itermocil
 complete -W "$(itermocil --list)" dev
 #}}}
@@ -160,7 +160,7 @@ alias dev="itermocil --here"
 # =============================================================================
 # Private Aliases#{{{
 # =============================================================================
-. ~/.privaliases.sh #}}}
+[ -f ~/.privaliases.sh ] && source ~/.privaliases.sh #}}}
 # =============================================================================
 # Fun stuff#{{{
 # =============================================================================
