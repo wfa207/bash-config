@@ -102,6 +102,9 @@ virtual_env_directory_nav() {
 [ -f ~/.configvar.sh ] && . ~/.configvar.sh
 # Autocompletion for itermocil
 complete -W "$(itermocil --list)" dev
+
+# Install snow theme
+[ -n "$PS1" ] && sh ~/.vim/plugged/snow/shell/snow_dark.sh
 #}}}
 # =============================================================================
 # Navigation Aliases#{{{
