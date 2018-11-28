@@ -5,7 +5,9 @@
 # Python#{{{
 # =============================================================================
 export PYTHONSTARTUP=~/.pystartup.py
-[ -z ${$(which virtualenvwrapper.sh)+x} ] && source $(which virtualenvwrapper.sh)
+
+# Test if virtualenvwrapper.sh path is a non-zero-length string
+[ ! -z $(which virtualenvwrapper.sh) ] && source $(which virtualenvwrapper.sh)
 #}}}
 # =============================================================================
 # Powerline Configuration#{{{
