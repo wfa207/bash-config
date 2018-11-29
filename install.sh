@@ -4,7 +4,7 @@ brew install TomAnthony/brews/itermocil
 # Install powerline-shell
 git clone https://github.com/b-ryan/powerline-shell
 cd powerline-shell
-python setup.py install
+PATH=/usr/local/opt/python/libexec/bin:/usr/local/bin:/usr/bin python setup.py install
 cd ..
 rm -rf powerline-shell
 
@@ -19,7 +19,7 @@ cd ..
 rm -rf fonts
 
 # Create sym links for needed files & clean-up name-space
-TGT_FILE_NAMES=(bashrc bash_profile bash-powerline.sh pystartup xpather.py)
+TGT_FILE_NAMES=(bashrc bash_profile inputrc bash-powerline.sh pystartup xpather.py)
 
 for file_name in ${TGT_FILE_NAMES[@]}; do
 	ln -Fhs $(pwd)/${file_name} ~/.${file_name}

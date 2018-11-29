@@ -68,17 +68,6 @@ venv_arg_func() {
 	fi
 }
 
-# Run project (must specify name of project / subproject and function name)
-python_script_utility() {
-	# $1 must be the (sub) project name and $2 must be the function name
-	# If $3 exists, then we will run the script with arguments
-	if [ -z "$3" ]; then python -m "$1".bin "$2"
-	else
-		local PY_ARG="$3"
-		python -m "$1".bin "$2" "$PY_ARG" --option=single
-	fi
-}
-
 virtual_env_directory_nav() {
 	local BASE_URL=/Users/wesauyueng/.virtualenvs/$1/lib/python2.7/site-packages
 	if [ -z $2 ]; then cd $BASE_URL
@@ -155,10 +144,8 @@ alias venv=virtual_env_directory_nav
 # General Aliases#{{{
 # =============================================================================
 alias .b=". ~/.bashrc"
-alias runpy=python_script_utility
 alias cl="clear"
 alias dev-tmux="tmux splitw -bp 96 vim"
-alias envy="EDITOR=subl envy"
 alias kinesis-streams="aws firehose list-delivery-streams --limit 10000"
 alias dev="itermocil --here"
 #}}}
